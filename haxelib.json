@@ -1,0 +1,14 @@
+{
+  "name": "nebula.gl",
+  "license": "MIT",
+  "tags": ["react", "nebula.gl"],
+  "classPath": "src",
+  "contributors": [
+    "kevinresol"
+  ],
+  "releasenote": "initial release",
+  "version": "0.0.0",
+  "dependencies": {
+    "deck.gl": ""
+  }
+}
