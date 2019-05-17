@@ -11,11 +11,14 @@ extern class EditableGeoJsonLayer extends Layer {
 
 
 typedef EditableGeoJsonLayerOptions = {
-	?id:String,
-	?data:FeatureCollection<Geometry>,
+	> BaseLayerOptions<FeatureCollection<Geometry>>, // actually can be any geojson
+	
 	?mode:String,
+	?modeConfig:Dynamic,
+	?modeHandlers:Dynamic,
 	?selectedFeatureIndexes:Array<Int>,
 	?onEdit:EditEvent->Void,
+	?pickable:Bool,
 	
 	?filled:Bool,
 	?stroked:Bool,
