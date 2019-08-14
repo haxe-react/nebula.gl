@@ -5,19 +5,17 @@ import haxe.extern.EitherType;
 import react.deck_gl.Layer;
 
 @:jsRequire('nebula.gl', 'EditableGeoJsonLayer')
-extern class EditableGeoJsonLayer extends Layer {
-	function new(opt:EditableGeoJsonLayerOptions);
-}
+extern class EditableGeoJsonLayer<T> extends Layer<EditableGeoJsonLayerOptions<T>> {}
 
 
-typedef EditableGeoJsonLayerOptions = {
-	> BaseLayerOptions<FeatureCollection<Geometry>>, // actually can be any geojson
+typedef EditableGeoJsonLayerOptions<T> = {
+	> BaseLayerOptions<FeatureCollection<Geometry, T>>, // actually can be any geojson
 	
 	?mode:String,
 	?modeConfig:Dynamic,
 	?modeHandlers:Dynamic,
 	?selectedFeatureIndexes:Array<Int>,
-	?onEdit:EditEvent->Void,
+	?onEdit:EditEvent<T>->Void,
 	?pickable:Bool,
 	
 	?filled:Bool,
@@ -33,15 +31,15 @@ typedef EditableGeoJsonLayerOptions = {
 	?lineDashJustified:Bool,
 	?fp64:Bool,
 	
-	?getLineColor:EitherType<Array<Int>, Feature<Geometry>->Bool->String->Array<Int>>,
-	?getFillColor:EitherType<Array<Int>, Feature<Geometry>->Bool->String->Array<Int>>,
-	?getRadius:EitherType<Float, Feature<Geometry>->Bool->String->Float>,
-	?getLineWidth:EitherType<Float, Feature<Geometry>->Bool->String->Float>,
-	?getLineDashArray:EitherType<Array<Int>, Feature<Geometry>->Bool->String->Array<Int>>,
+	?getLineColor:EitherType<Array<Int>, Feature<Geometry, T>->Bool->String->Array<Int>>,
+	?getFillColor:EitherType<Array<Int>, Feature<Geometry, T>->Bool->String->Array<Int>>,
+	?getRadius:EitherType<Float, Feature<Geometry, T>->Bool->String->Float>,
+	?getLineWidth:EitherType<Float, Feature<Geometry, T>->Bool->String->Float>,
+	?getLineDashArray:EitherType<Array<Int>, Feature<Geometry, T>->Bool->String->Array<Int>>,
 }
 
-typedef EditEvent = {
-	updatedData:FeatureCollection<Geometry>,
+typedef EditEvent<T> = {
+	updatedData:FeatureCollection<Geometry, T>,
 	editType:String,
 	featureIndexes:Array<Int>,
 	editContext:Dynamic,
