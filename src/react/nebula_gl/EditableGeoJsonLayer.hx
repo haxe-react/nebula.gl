@@ -4,7 +4,7 @@ import geojson.*;
 import haxe.extern.EitherType;
 import react.deck_gl.Layer;
 
-@:jsRequire('nebula.gl', 'EditableGeoJsonLayer')
+@:jsRequire('@nebula.gl/layers', 'EditableGeoJsonLayer')
 extern class EditableGeoJsonLayer<T> extends Layer<EditableGeoJsonLayerOptions<T>> {}
 
 

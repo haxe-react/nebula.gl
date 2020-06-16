@@ -4,7 +4,7 @@ import geojson.*;
 import haxe.extern.EitherType;
 import react.deck_gl.*;
 
-@:jsRequire('nebula.gl', 'SelectionLayer')
+@:jsRequire('@nebula.gl/layers', 'SelectionLayer')
 extern class SelectionLayer extends Layer {
 	function new(opt:SelectionLayerOptions);
 }
