@@ -11,7 +11,7 @@ extern class EditableGeoJsonLayer<T> extends Layer<EditableGeoJsonLayerOptions<T
 typedef EditableGeoJsonLayerOptions<T> = {
 	> BasicProps<FeatureCollection<Geometry, T>>, // actually can be any geojson
 	
-	?mode:String,
+	?mode:EditMode,
 	?modeConfig:Dynamic,
 	?modeHandlers:Dynamic,
 	?selectedFeatureIndexes:Array<Int>,
